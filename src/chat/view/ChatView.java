@@ -4,14 +4,14 @@ import javax.swing.JOptionPane;
 
 public class ChatView {
 	
-	public void showResponse(String wordsFromSomewhere) {
+	public void showResponse(String wordsFromSomewhere) 
 	
 	{
 		JOptionPane.showMessageDialog(null, wordsFromSomewhere);
 		
 	}
 	
-	}
+	
 	
 	public String grabAnswer(String stuff)
 	{
@@ -19,6 +19,8 @@ public class ChatView {
 		answer = JOptionPane.showInputDialog(null, stuff);
 		return answer;
 	}
+	
+	
 	
 	
 

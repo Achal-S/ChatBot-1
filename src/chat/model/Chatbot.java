@@ -21,16 +21,50 @@ public class Chatbot
 	 */
 	public Chatbot(String userName)
 	{
+		this.memesList = new ArrayList<String>();
+		this.politicalTopicList = new ArrayList<String>();
 		this.userName = userName;
+		this.politicalTopicList = new ArrayList<String>();
+		this.userName = userName;
+		this.content = "food";
+		
+		buildMemesList();
+		buildPoliticalTopicsList();
+		
+		
 	}
 	
 	private void buildMemesList()
 	{
+		//me gusta, troll, what if i, spoder, doge, BLB, cute, animals, pepe, aliens, unhelpful teacher
+		this.memesList.add("me gusta");
+		this.memesList.add("what if I");
+		this.memesList.add("spoder");
+		this.memesList.add("doge");
+		this.memesList.add("BLB");
+		this.memesList.add("cute");
+		this.memesList.add("animals");
+		this.memesList.add("pepe");
+		this.memesList.add("aliens");
+		this.memesList.add("unhelpful teacher");
+		this.memesList.add("memes");
+	
 		
 	}
 	
 	private void buildPoliticalTopicsList()
 	{
+		this.politicalTopicList.add("Donald Trump");
+		this.politicalTopicList.add("Ben Carson");
+		this.politicalTopicList.add("Carly Fiorina");
+		this.politicalTopicList.add("Hilary Clinton");
+		this.politicalTopicList.add("Jeb Bush");
+		this.politicalTopicList.add("Bernie Sanders");
+		this.politicalTopicList.add("politics");
+		this.politicalTopicList.add("Republican");
+		this.politicalTopicList.add("Democrat");
+		this.politicalTopicList.add("Obama");
+		
 		
 	}
 	
@@ -46,7 +80,7 @@ public class Chatbot
 		
 		if(currentInput != null)
 		{
-			if(currentInput.length() > 1)
+			if(currentInput.length() >= 1)
 			{
 				hasLength = true;
 			}
@@ -69,7 +103,15 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+		
+		if(currentInput.toLowerCase().contains(content.toLowerCase()))
+		{
+			hasContent = true;
+		}
+		
+		
+		return hasContent;
 	}
 	
 	/**
@@ -78,9 +120,19 @@ public class Chatbot
 	 * @param currentInput The supplied String to be checked.
 	 * @return Whether the String is contained in the ArrayList.
 	 */
-	public boolean politicalTopicChecker(String currentInput)
+	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean hasMeme = false;
+		
+		for(String currentMeme: memesList)
+	
+		
+		if(currentMeme.equalsIgnoreCase(currentInput))
+		{
+			hasMeme = true;
+		}
+		
+		return hasMeme;
 	}
 	
 	
@@ -89,9 +141,21 @@ public class Chatbot
 	 * @param currentInput The supplied String to be checked.
 	 * @return Whether the supplied String is a recognized meme.
 	 */
-	public boolean memeChecker(String currentInput)
+	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean hasPT = false;
+		
+		for(String PT: politicalTopicList)
+	
+		
+		if(PT.equalsIgnoreCase(currentInput))
+		{
+			hasPT = true;
+		}
+		
+		return hasPT;
+		
+		
 	}
 	
 	/**
@@ -109,7 +173,7 @@ public class Chatbot
 	 */
 	public String getContent()
 	{
-		return null;
+		return content;
 	}
 	
 	/**
@@ -118,7 +182,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 	
 	/**
@@ -127,7 +191,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicList;
 	}
 	
 	/**
