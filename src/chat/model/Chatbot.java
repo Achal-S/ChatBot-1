@@ -158,6 +158,76 @@ public class Chatbot
 		
 	}
 	
+	public String processConversation(String currentInput)
+	{
+		String nextConversation = "oh, what else would you like to talk about?";
+		int randomTopic = (int) (Math.random() * 5 ); //Generates a random number between 0 and 4
+		
+		switch (randomTopic)
+		{
+		case 0:
+			if(memeChecker(currentInput))
+			{
+				nextConversation = "That is a very popular meme this year. What else are you" + "wanting to talk about?";
+			}
+			break;
+			
+		case 1:
+			if(politicalTopicChecker(currentInput))
+			{
+				nextConversation = "some words and a question";
+			}
+			
+			break;
+			
+		case 2:
+			
+			if(contentChecker(currentInput))
+			{
+				
+			}
+			
+			break;
+			
+		case 3:
+
+			if(currentInput.length() > 20)
+			{
+				nextConversation = "That is a long response";
+			}
+			
+			
+			break;
+			
+		case 4:
+
+			if(contentChecker(currentInput))
+			{
+				
+			}
+			
+			
+			break;
+			default:
+				nextConversation = "";
+				break;
+			
+			
+			
+			
+			
+		}
+		return nextConversation;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Returns the username of this Chatbot instance.
 	 * @return The username of the Chatbot.

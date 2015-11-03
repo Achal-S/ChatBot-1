@@ -35,6 +35,10 @@ public class ChatController
 				.grabAnswer("What would you like to talk about today?");
 		while (simpleBot.lengthChecker(conversation))
 		{
+			conversation = simpleBot.processConversation(conversation);
+			conversation = display.grabAnswer(simpleBot.processConversation(conversation));
+		}
+		{
 			if (simpleBot.contentChecker(conversation))
 			{
 				display.showResponse("Wow, I had no idea you are interested in "
@@ -80,7 +84,7 @@ public class ChatController
 
 	private void shutDown()
 	{
-
+		display.showResponse("Good bye" + userName + ", have a nice day"); 
 	}
 
 }
