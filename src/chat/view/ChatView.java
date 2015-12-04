@@ -19,7 +19,7 @@ public class ChatView
 	
 	{
 		JOptionPane.showMessageDialog(null, wordsFromSomewhere);
-		
+		 
 	}
 	
 	

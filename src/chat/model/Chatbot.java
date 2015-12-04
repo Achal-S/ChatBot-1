@@ -96,6 +96,25 @@ public class Chatbot
 		return hasLength;
 	}
 	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean keyboardMashChecker = false;
+		if( currentInput.length() > 15 )
+		{
+			keyboardMashChecker = true;
+			
+		}
+		return keyboardMashChecker;
+	}
+	
+		
+		
+	
+	public boolean quitChecker(String currentInput)
+	{
+		return quitChecker(null);
+	}
+	
 	/**
 	 * Checks if the supplied String matches the content area for this Chatbot instance.
 	 * @param currentInput The supplied String to be checked.
@@ -161,62 +180,62 @@ public class Chatbot
 	public String processConversation(String currentInput)
 	{
 		String nextConversation = "oh, what else would you like to talk about?";
-		int randomTopic = (int) (Math.random() * 5 ); //Generates a random number between 0 and 4
-		
-		switch (randomTopic)
-		{
-		case 0:
-			if(memeChecker(currentInput))
-			{
-				nextConversation = "That is a very popular meme this year. What else are you" + "wanting to talk about?";
-			}
-			break;
-			
-		case 1:
-			if(politicalTopicChecker(currentInput))
-			{
-				nextConversation = "some words and a question";
-			}
-			
-			break;
-			
-		case 2:
-			
-			if(contentChecker(currentInput))
-			{
-				
-			}
-			
-			break;
-			
-		case 3:
-
-			if(currentInput.length() > 20)
-			{
-				nextConversation = "That is a long response";
-			}
-			
-			
-			break;
-			
-		case 4:
-
-			if(contentChecker(currentInput))
-			{
-				
-			}
-			
-			
-			break;
-			default:
-				nextConversation = "";
-				break;
-			
-			
-			
-			
-			
-		}
+//		int randomTopic = (int) (Math.random() * 5 ); //Generates a random number between 0 and 4
+//		
+//		switch (randomTopic)
+//		{
+//		case 0:
+//			if(memeChecker(currentInput))
+//			{
+//				nextConversation = "That is a very popular meme this year. What else are you" + "wanting to talk about?";
+//			}
+//			break;
+//			
+//		case 1:
+//			if(politicalTopicChecker(currentInput))
+//			{
+//				nextConversation = "some words and a question";
+//			}
+//			
+//			break;
+//			
+//		case 2:
+//			
+//			if(contentChecker(currentInput))
+//			{
+//				
+//			}
+//			
+//			break;
+//			
+//		case 3:
+//
+//			if(currentInput.length() > 20)
+//			{
+//				nextConversation = "That is a long response";
+//			}
+//			
+//			
+//			break;
+//			
+//		case 4:
+//
+//			if(contentChecker(currentInput))
+//			{
+//				
+//			}
+//			
+//			
+//			break;
+//			default:
+//				nextConversation = "";
+//				break;
+//			
+//			
+//			
+//			
+//			
+//		}
 		return nextConversation;
 	}
 	

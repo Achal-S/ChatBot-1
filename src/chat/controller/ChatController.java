@@ -2,31 +2,32 @@ package chat.controller;
 
 import java.util.ArrayList;
 
+import chat.view.ChatFrame;
 import chat.model.Chatbot;
 import chat.view.ChatView;
 
 public class ChatController
 {
 
-	private ArrayList<String> memesList;
-	private ArrayList<String> politicalTopicList;
-	private String userName;
-	private String content;
+	
+	private ChatFrame baseFrame;
 	private Chatbot simpleBot;
 	private ChatView display;
-
+	
+	
 	public ChatController()
 	{
 		display = new ChatView();
 		String userName = display.grabAnswer("My name is Cortana, what is your name?");
 		simpleBot = new Chatbot(userName);
+		baseFrame = new ChatFrame(this);
 	}
 
 	public void start()
 	{
 		display.showResponse("Hello " + simpleBot.getUserName());
-
-		chat();
+		
+		//chat();
 	}
 
 	private void chat()
@@ -45,7 +46,7 @@ public class ChatController
 						+ simpleBot.getContent());
 			}
 			else if (simpleBot.politicalTopicChecker(conversation))
-			{
+		{
 				display.showResponse("Wow you actually care about " + conversation + "?");
 			}
 			else if (simpleBot.memeChecker(conversation))
@@ -54,18 +55,14 @@ public class ChatController
 			}
 			
 
-			else
+		else
 			{
 				conversation = display.grabAnswer("That's what you would like to talk about?");
 			}
 			
 			conversation = display.grabAnswer("Well I do not want to talk about that, what else is on your mind?");
 			
-			
-		
-			
-
-		}
+			}
 
 		// {
 		// if(!simpleBot.quitChecker(conversation))
@@ -82,9 +79,18 @@ public class ChatController
 		// }
 	}
 
+	
+	public String userToChatbot(String conversation)
+	{
+		String response = "";
+		response = simpleBot.processConversation(conversation);
+		
+		return response;
+	}
+	
 	private void shutDown()
 	{
-		display.showResponse("Good bye" + userName + ", have a nice day"); 
+		display.showResponse("Good bye have a nice day"); 
 	}
 
 }
