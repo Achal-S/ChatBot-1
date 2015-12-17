@@ -1,6 +1,7 @@
 package chat.view;
 
 import chat.controller.ChatController;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -9,6 +10,7 @@ import chat.view.ChatFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class ChatPanel extends JPanel
 {
@@ -19,6 +21,7 @@ public class ChatPanel extends JPanel
 	private JLabel pic;
 	private JTextArea chatArea;
 	private SpringLayout mainLayout;
+	private Color color;
 	
 	public ChatPanel(ChatController mainController)
 	{
@@ -33,8 +36,6 @@ public class ChatPanel extends JPanel
 		pic = new JLabel(chatPic);
 		
 		
-			
-	
 		
 		
 		
@@ -76,6 +77,9 @@ public class ChatPanel extends JPanel
 		
 		submitButton.addActionListener(new ActionListener()
 		{
+		
+	
+		
 			public void actionPerformed(ActionEvent click)
 			{
 				String userText = typingField.getText();
@@ -83,12 +87,41 @@ public class ChatPanel extends JPanel
 				typingField.setText("");
 				String response = mainController.userToChatbot(userText);
 				chatArea.append("\nChatbot: " + response);
-				
+				setBackground(randomColor());
 			}
 		});
 	}
+		
+		
+		public void keyPressed(KeyEvent e) 
+		{
+		    if (e.getKeyCode()==KeyEvent.VK_ENTER)
+		    {
+		    	String userText = typingField.getText();
+				chatArea.append("\nUser: " + userText);
+				typingField.setText("");
+				String response = mainController.userToChatbot(userText);
+				chatArea.append("\nChatbot: " + response);
+				setBackground(randomColor());
+				
+				
+		    }
+		    
+
+		
+	}
+	
+	public Color randomColor()
+	{
+	  Random random=new Random(); // Probably really put this somewhere where it gets executed only once
+	  int red=random.nextInt(256);
+	  int green=random.nextInt(256);
+	  int blue=random.nextInt(256);
+	  return new Color(red, green, blue);
+	}
 	
 	
+
 	
 
 }
